@@ -1,0 +1,483 @@
+
+<!DOCTYPE html><html><head>
+      <title>WORKFLOW</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="jzj">JZJ</h1>
+
+<h2 class="mume-header" id="first-month">First Month</h2>
+
+<h3 class="mume-header" id="first-day">First Day</h3>
+
+<hr>
+<p><mark>Nice Day</mark></p>
+<h3 class="mume-header" id="second-day">Second Day</h3>
+
+<hr>
+<h4 class="mume-header" id="scrollview%E5%B5%8C%E5%A5%97wkwebview">scrollView&#x5D4C;&#x5957;WKWebView</h4>
+
+<p><img src="https://img-blog.csdn.net/20171120192043359" alt="pic"><br>
+&#x5728;scrollView&#x4E0A;&#x76F4;&#x63A5;&#x6DFB;&#x52A0;&#x539F;&#x751F;&#x63A7;&#x4EF6;&#x548C;wkwebview&#xFF0C;&#x6ED1;&#x52A8;&#x67E5;&#x770B;web&#x8D44;&#x6E90;&#x3002;&#x8981;&#x4FDD;&#x8BC1;web&#x548C;&#x539F;&#x751F;&#x63A7;&#x4EF6;&#x4E00;&#x8D77;&#x6ED1;&#x52A8;&#x3002;&#x9700;&#x8981;&#x52A8;&#x6001;&#x7684;&#x83B7;&#x53D6;web&#x7684;contentSize&#xFF0C;&#x8BA9;web&#x7684;web&#x7684;frameSize&#x548C;contentsize&#x4E00;&#x6837;&#x3002;</p>
+<ul>
+<li>&#x6DFB;&#x52A0;kvo&#x89C2;&#x5BDF;&#x8005;&#xFF0C;&#x76D1;&#x542C;contentsize</li>
+<li>&#x83B7;&#x53D6;&#x5230;contentsize&#x540E;&#xFF0C;&#x518D;&#x53BB;&#x4FEE;&#x6539;frame&#x7684;size</li>
+</ul>
+<h3 class="mume-header" id="third-day">Third Day</h3>
+
+<hr>
+<p>&#x67E5;&#x770B;&#x9879;&#x76EE;&#x7684;&#x4E1A;&#x52A1;&#x903B;&#x8F91;</p>
+<ul>
+<li>
+<p>&#x4F01;&#x4E1A;&#x8BA4;&#x8BC1;&#x9875;&#x9762;&#x4E2D;&#x5DF2;&#x7ECF;&#x901A;&#x8FC7;&#x65F6;&#xFF0C;&#x5728;&#x8BE5;&#x9875;&#x9762;&#x6709;<mark>&#x66F4;&#x6539;&#x4F01;&#x4E1A;</mark>&#x53EF;&#x4EE5;&#x66F4;&#x6539;&#x4F01;&#x4E1A;&#x8BA4;&#x8BC1;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x8FD9;&#x4E2A;&#x6309;&#x94AE;&#x9A6C;&#x4E0A;&#x5C31;&#x53D8;&#x6210;<mark>&#x786E;&#x8BA4;&#x66F4;&#x6539;</mark>&#xFF0C;&#x5C31;&#x4E0D;&#x8FC7;&#x624B;&#x6307;&#x53CD;&#x5E94;&#x4E0D;&#x53CA;&#xFF0C;&#x70B9;&#x4E86;&#x4E00;&#x4E0B;<mark>&#x786E;&#x8BA4;&#x66F4;&#x6539;</mark>&#x5C31;&#x4F1A;&#x9000;&#x51FA;&#x8FD9;&#x4E2A;&#x9875;&#x9762;&#x8FD4;&#x56DE;&#x5230;&#x4E0A;&#x4E00;&#x7EA7;&#x9875;&#x9762;</p>
+</li>
+<li>
+<p>&#x5728;&#x5708;&#x7EC4;&#x91CC;&#x53D1;&#x5E03;&#x52A8;&#x6001;&#xFF0C;&#x53D1;&#x5E03;&#x7684;&#x6587;&#x5B57;&#x91CC;&#x6709;&#x8868;&#x60C5;&#x7B26;&#x53F7;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53D1;&#x5E03;&#x4E0D;&#x6210;&#x529F;</p>
+</li>
+</ul>
+<h3 class="mume-header" id="fourth-day">fourth Day</h3>
+
+<hr>
+<p>tableview&#x6709;&#x591A;&#x9009;&#x548C;&#x5220;&#x9664;&#x529F;&#x80FD;&#x65F6;</p>
+<pre data-role="codeBlock" data-info="objc" class="language-objectivec"><span class="token comment">//tableViewDelegate &#x63D0;&#x4EA4;&#x9009;&#x62E9;&#x7684;&#x65B9;&#x6CD5;</span>
+<span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>tableView<span class="token punctuation">:</span><span class="token punctuation">(</span>UITableView <span class="token operator">*</span><span class="token punctuation">)</span>tableView commitEditingStyle<span class="token punctuation">:</span><span class="token punctuation">(</span>UITableViewCellEditingStyle<span class="token punctuation">)</span>editingStyle forRowAtIndexPath<span class="token punctuation">:</span><span class="token punctuation">(</span>NSIndexPath <span class="token operator">*</span><span class="token punctuation">)</span>indexPath
+<span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>editingStyle <span class="token operator">==</span> <span class="token punctuation">(</span>UITableViewCellEditingStyleDelete<span class="token operator">|</span>UITableViewCellEditingStyleInsert<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">//&#x591A;&#x9009;&#x65F6;&#x7684;&#x679A;&#x4E3E;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>editingStyle <span class="token operator">==</span> UITableViewCellEditingStyleDelete<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">//&#x5220;&#x9664;&#x65F6;&#x7684;&#x679A;&#x4E3E;</span>
+
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// &#x6ED1;&#x52A8;&#x5220;&#x9664;&#x7684;&#x7EA2;&#x8272;&#x6587;&#x6848;&#x4FEE;&#x6539;</span>
+<span class="token operator">-</span><span class="token punctuation">(</span>NSString <span class="token operator">*</span><span class="token punctuation">)</span>tableView<span class="token punctuation">:</span><span class="token punctuation">(</span>UITableView <span class="token operator">*</span><span class="token punctuation">)</span>tableView titleForDeleteConfirmationButtonForRowAtIndexPath<span class="token punctuation">:</span><span class="token punctuation">(</span>NSIndexPath <span class="token operator">*</span><span class="token punctuation">)</span>indexPath
+<span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token string">@&quot;&#x5220;&#x9664;&quot;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</pre><p>&#x6709;&#x65F6;&#x591A;&#x9009;&#x70B9;&#x51FB;&#x4E0D;&#x7BA1;&#x7528;&#x53EF;&#x80FD;&#x662F;&#x56E0;&#x4E3A;&#x81EA;&#x5B9A;&#x4E49;&#x7684;cell&#x8BBE;&#x7F6E;&#x4E86;&#x9009;&#x4E2D;&#x65E0;&#x6548;&#x679C;&#x7684;&#x679A;&#x4E3E;</p>
+<pre data-role="codeBlock" data-info="objc" class="language-objectivec">    <span class="token keyword">self</span><span class="token punctuation">.</span>selectionStyle <span class="token operator">=</span> UITableViewCellSelectionStyleNone<span class="token punctuation">;</span>
+</pre><h3 class="mume-header" id="bug-day">bug day</h3>
+
+<pre data-role="codeBlock" data-info="objc" class="language-objectivec">NSMutableDictionary <span class="token operator">*</span>temp <span class="token operator">=</span> <span class="token punctuation">[</span>NSMutableDictionary dictionaryWithDictionary<span class="token punctuation">:</span> <span class="token operator">@</span><span class="token punctuation">{</span><span class="token string">@&quot;one&quot;</span><span class="token punctuation">:</span><span class="token string">@&quot;tow&quot;</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">[</span>temp setObject<span class="token punctuation">:</span>weakSelf<span class="token punctuation">.</span>docListModel<span class="token punctuation">.</span>fileName forKey<span class="token punctuation">:</span>fileName<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+</pre><h3 class="mume-header" id="masonry">masonry</h3>
+
+<p><img src="img/markDownMasonry.png" alt="pic"></p>
+<table class="mume-header" id="%E5%8F%AF%E4%BB%A5%E8%AE%BE%E7%BD%AEmasonry%E7%9A%84%E7%BA%A6%E6%9D%9F%E4%BC%98%E5%85%88%E7%BA%A7%E5%AE%9E%E7%8E%B0"><tbody><tr><td bgcolor="black">
+<font face="STCAIYUN" color="white" size="3">&#x4E00;&#x822C;titleUp&#x77ED;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E0A;&#x4E0B;title&#x7684;top&#x548C;bottom&#x5206;&#x522B;&#x4E0E;image&#x7684;top&#x548C;bottom&#x5BF9;&#x9F50;&#xFF0C;&#x5982;&#x679C;titleUP&#x957F;&#x7684;&#x8BDD;&#x5C31;&#x8BA9;titleDown&#x7684;top&#x8DDD;&#x79BB;titleUp&#x7684;bottom&#x4E00;&#x6BB5;&#x8DDD;&#x79BB;</font>
+</td></tr></tbody></table>
+####  &#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;masonry&#x7684;&#x7EA6;&#x675F;&#x4F18;&#x5148;&#x7EA7;&#x5B9E;&#x73B0;
+
+<pre data-role="codeBlock" data-info="objc" class="language-objectivec">make<span class="token punctuation">.</span>bottom<span class="token punctuation">.</span><span class="token function">equalTo</span><span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">.</span>docAvatar<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">priorityLow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+make<span class="token punctuation">.</span>top<span class="token punctuation">.</span><span class="token function">equalTo</span><span class="token punctuation">(</span><span class="token keyword">self</span><span class="token punctuation">.</span>docTitle<span class="token punctuation">.</span>mas_bottom<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">mas_offset</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">priorityHigh</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre><h3 class="mume-header" id="duplicate-tagete">duplicate Tagete</h3>
+
+<hr>
+<p><img src="img/duplicateTagete.png" alt="pic"><br>
+<img src="img/duplicateTagetecopy.png" alt="pic"></p>
+<pre data-role="codeBlock" data-info class="language-"><code>Details
+
+Unable to install &quot;EVNTouchIDDemo&quot;
+Domain: com.apple.dt.MobileDeviceErrorDomain
+Code: -402653008
+--
+This application or a bundle it contains has the same bundle identifier as this application or another bundle that it contains. Bundle identifiers must be unique.
+Domain: com.apple.dt.MobileDeviceErrorDomain
+Code: -402653008
+User Info: {
+    DVTRadarComponentKey = 261622;
+    MobileDeviceErrorCode = &quot;(0xE80000B0)&quot;;
+    &quot;com.apple.dtdevicekit.stacktrace&quot; = (
+	0   DTDeviceKitBase                     0x000000011beea81a DTDKCreateNSErrorFromAMDErrorCode + 233
+	1   DTDeviceKitBase                     0x000000011bf2bf70 __90-[DTDKMobileDeviceToken installApplicationBundleAtPath:withOptions:andError:withCallback:]_block_invoke + 155
+	2   DVTFoundation                       0x0000000102ee5155 DVTInvokeWithStrongOwnership + 73
+	3   DTDeviceKitBase                     0x000000011bf2bca8 -[DTDKMobileDeviceToken installApplicationBundleAtPath:withOptions:andError:withCallback:] + 1654
+	4   IDEiOSSupportCore                   0x000000011bda2e91 __118-[DVTiOSDevice(DVTiPhoneApplicationInstallation) processAppInstallSet:appUninstallSet:installOptions:completionBlock:]_block_invoke.352 + 4165
+	5   DVTFoundation                       0x00000001030187f4 __DVT_CALLING_CLIENT_BLOCK__ + 7
+	6   DVTFoundation                       0x000000010301a436 __DVTDispatchAsync_block_invoke + 1194
+	7   libdispatch.dylib                   0x00007fff65516583 _dispatch_call_block_and_release + 12
+	8   libdispatch.dylib                   0x00007fff6551750e _dispatch_client_callout + 8
+	9   libdispatch.dylib                   0x00007fff6551cace _dispatch_lane_serial_drain + 597
+	10  libdispatch.dylib                   0x00007fff6551d452 _dispatch_lane_invoke + 363
+	11  libdispatch.dylib                   0x00007fff65526a9e _dispatch_workloop_worker_thread + 598
+	12  libsystem_pthread.dylib             0x00007fff657716fc _pthread_wqthread + 290
+	13  libsystem_pthread.dylib             0x00007fff65770827 start_wqthread + 15
+);
+}
+--
+
+
+
+System Information
+
+macOS Version 10.15.2 (Build 19C57)
+Xcode 11.5 (16139)
+</code></pre><table><tbody><tr><td bgcolor="black">
+<font face="STCAIYUN" color="white" size="3">
+&#x5F53;&#x4E00;&#x4E2A;&#x9879;&#x76EE;&#x6709;&#x4E86;&#x591A;&#x4E2A;tagete&#x65F6;,bundleID&#x4E0D;&#x6B62;&#x8981;&#x8BBE;&#x7F6E;&#x7684;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x8FD8;&#x5F97;&#x6B21;&#x9879;&#x76EE;bundleID&#x662F;&#x4E3B;&#x9879;&#x76EE;bundleID&#x7684;&#x5EF6;&#x5C55;&#x540D;&#x79F0;
+</font>
+</td></tr></tbody></table>
+```
+In my case I solved the issue by changing my application bundle identifier &amp; extension bundle identifier. If application bundle identifier is like : com.companyName.productName then the extension bundle identifier has to be like : com.companyName.productName.extensionName
+```
+<h3 class="mume-header" id="xcode-rename%E5%B7%A5%E7%A8%8B%E4%B8%AD%E7%9A%84%E6%96%87%E4%BB%B6">xcode rename&#x5DE5;&#x7A0B;&#x4E2D;&#x7684;&#x6587;&#x4EF6;</h3>
+
+<hr>
+<font face="STCAIYUN" color="blue" size="3">
+command + &#x70B9;&#x51FB;&#x8BE5;&#x6587;&#x4EF6;&#x5165;&#x53E3;&#x7C7B;&#x540D;
+</font>
+&#x4F1A;&#x663E;&#x793A;&#x51FA;&#x7F16;&#x8F91;&#x9875;&#x9762;&#xFF0C;&#x4FEE;&#x6539;&#x540D;&#x79F0;&#x540E;&#x70B9;&#x51FB;&#x6309;&#x94AE;&#x6210;&#x529F;&#x4FEE;&#x6539;&#xFF0C;&#x4E00;&#x822C;&#x4E0D;&#x4F1A;&#x6709;&#x95EE;&#x9898;   
+<p>&#x4F46;&#x662F;&#x81F3;&#x5C11;&#x5728;<code>PrefixHeader.pch</code>&#x4E2D;&#xFF0C;rename&#x7684;&#x6587;&#x4EF6;&#x540D;&#x79F0;&#x8FD8;&#x662F;&#x539F;&#x6765;&#x7684;&#x540D;&#x79F0;&#xFF0C;&#x5176;&#x4ED6;&#x7684;&#x4E00;&#x822C;&#x7684;&#x5F15;&#x7528;&#x8BE5;&#x7C7B;&#x7684;&#x6587;&#x4EF6;&#x4E5F;&#x4F1A;&#x6709;&#x8BE5;&#x6587;&#x4EF6;&#x540D;&#x79F0;&#x6B8B;&#x7559;&#xFF0C;&#x8BB0;&#x5F97;&#x7F16;&#x8BD1;&#x540E;&#x518D;&#x63D0;&#x4EA4;&#x3002;</p>
+<p><mark>&#x5305;&#x62EC;&#x76F4;&#x63A5;&#x4F7F;&#x7528;string&#x7C7B;&#x540D;&#x7684;</mark></p>
+<pre data-role="codeBlock" data-info="objc" class="language-objectivec"><span class="token punctuation">[</span><span class="token punctuation">[</span>UIViewController currentViewController<span class="token punctuation">]</span> pushToViewControllerName<span class="token punctuation">:</span><span class="token string">@&quot;JYLDocPreviewVC&quot;</span> pushType<span class="token punctuation">:</span>JYLPushEnum_Property propertyDic<span class="token punctuation">:</span><span class="token operator">@</span><span class="token punctuation">{</span><span class="token string">@&quot;requestFileUrl&quot;</span><span class="token punctuation">:</span><span class="token keyword">self</span><span class="token punctuation">.</span>fileDirString<span class="token punctuation">,</span><span class="token string">@&quot;naviTitle&quot;</span><span class="token punctuation">:</span><span class="token keyword">self</span><span class="token punctuation">.</span>docListModel<span class="token punctuation">.</span>fileName<span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">;</span> 
+</pre><h3 class="mume-header" id="%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E5%9C%B0%E5%9D%80%E6%98%A0%E5%B0%84">&#x672C;&#x5730;&#x6587;&#x4EF6;&#x5730;&#x5740;&#x6620;&#x5C04;</h3>
+
+<hr>
+<font face="&#x9ED1;&#x4F53;" color="green" size="3">
+&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;URL&#x7528;&#x6765;&#x6620;&#x5C04;&#x539F;&#x6765;&#x7684;&#x6587;&#x4EF6;&#x5730;&#x5740;URL
+</font>
+<pre data-role="codeBlock" data-info="objc" class="language-objectivec"><span class="token punctuation">[</span><span class="token punctuation">[</span>NSFileManager defaultManager<span class="token punctuation">]</span> linkItemAtURL<span class="token punctuation">:</span><span class="token punctuation">[</span>NSURL fileURLWithPath<span class="token punctuation">:</span>model<span class="token punctuation">.</span>filePath<span class="token punctuation">]</span> toURL<span class="token punctuation">:</span>formatUrlToShare error<span class="token punctuation">:</span>nil<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</pre><h3 class="mume-header" id="%E4%BB%8E%E7%9C%9F%E6%9C%BA%E4%B8%8A%E8%8E%B7%E5%8F%96order%E6%96%87%E4%BB%B6">&#x4ECE;&#x771F;&#x673A;&#x4E0A;&#x83B7;&#x53D6;order&#x6587;&#x4EF6;</h3>
+
+<font face="&#x9ED1;&#x4F53;" color="black" size="3">
+&#x6211;&#x4EEC;&#x628A;order&#x6587;&#x4EF6;&#x5B58;&#x5728;&#x4E86;&#x771F;&#x673A;&#x4E0A;&#x7684;tmp&#x6587;&#x4EF6;&#x5939;&#x4E2D;&#xFF0C;&#x8981;&#x600E;&#x4E48;&#x62FF;&#x5230;&#x5462;&#xFF1F;
+</font>
+<font face="&#x9ED1;&#x4F53;" color="green" size="3">
+&#x5728;Window&#x2192;Devices And Simulators(&#x5FEB;&#x6377;&#x952E;&#x21E7;+&#x2318;+2)&#x4E2D;&#xFF1A;&#x83B7;&#x53D6;&#x771F;&#x673A;&#x6587;&#x4EF6;
+</font>
+<p><img src="img/deviceFileGet.png" alt="pic"></p>
+<h3 class="mume-header" id="%E4%BC%98%E5%8C%96%E5%90%AF%E5%8A%A8%E9%80%9F%E5%BA%A6">&#x4F18;&#x5316;&#x542F;&#x52A8;&#x901F;&#x5EA6;</h3>
+
+<p>&#x5728;&#x7CFB;&#x7EDF;&#x6267;&#x884C;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x7684;main&#x51FD;&#x6570;&#x5E76;&#x8C03;&#x7528;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x59D4;&#x6258;&#x51FD;&#x6570;<code>applicationWillFinishLaunching</code>&#x4E4B;&#x524D;&#xFF0C;&#x4F1A;&#x53D1;&#x751F;&#x5F88;&#x591A;&#x4E8B;&#x60C5;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5C06;<code>DYLD_PRINT_STATISTICS</code>&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x6DFB;&#x52A0;&#x5230;&#x9879;&#x76EE;scheme&#x4E2D;&#x3002;<br>
+<img src="img/pre_main.png" alt="pic"></p>
+<pre data-role="codeBlock" data-info="js" class="language-javascript">Total pre<span class="token operator">-</span>main time<span class="token punctuation">:</span> <span class="token number">856.80</span> <span class="token function">milliseconds</span> <span class="token punctuation">(</span><span class="token number">100.0</span><span class="token operator">%</span><span class="token punctuation">)</span>
+         dylib loading time<span class="token punctuation">:</span> <span class="token number">156.37</span> <span class="token function">milliseconds</span> <span class="token punctuation">(</span><span class="token number">18.2</span><span class="token operator">%</span><span class="token punctuation">)</span>
+        rebase<span class="token operator">/</span>binding time<span class="token punctuation">:</span>  <span class="token number">72.90</span> <span class="token function">milliseconds</span> <span class="token punctuation">(</span><span class="token number">8.5</span><span class="token operator">%</span><span class="token punctuation">)</span>
+            ObjC setup time<span class="token punctuation">:</span>  <span class="token number">11.48</span> <span class="token function">milliseconds</span> <span class="token punctuation">(</span><span class="token number">1.3</span><span class="token operator">%</span><span class="token punctuation">)</span>
+           initializer time<span class="token punctuation">:</span> <span class="token number">616.04</span> <span class="token function">milliseconds</span> <span class="token punctuation">(</span><span class="token number">71.9</span><span class="token operator">%</span><span class="token punctuation">)</span>
+           slowest intializers <span class="token punctuation">:</span>
+    libMainThreadChecker<span class="token punctuation">.</span>dylib <span class="token punctuation">:</span>  <span class="token number">24.63</span> <span class="token function">milliseconds</span> <span class="token punctuation">(</span><span class="token number">2.8</span><span class="token operator">%</span><span class="token punctuation">)</span>
+          libglInterpose<span class="token punctuation">.</span>dylib <span class="token punctuation">:</span> <span class="token number">406.86</span> <span class="token function">milliseconds</span> <span class="token punctuation">(</span><span class="token number">47.4</span><span class="token operator">%</span><span class="token punctuation">)</span>
+                     &#x6377;&#x53CB;&#x8054; <span class="token punctuation">:</span> <span class="token number">326.56</span> <span class="token function">milliseconds</span> <span class="token punctuation">(</span><span class="token number">38.1</span><span class="token operator">%</span><span class="token punctuation">)</span>
+</pre><p>&#x8F93;&#x51FA;&#x663E;&#x793A;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;main&#x65F6;&#x6240;&#x7528;&#x7684;&#x603B;&#x65F6;&#x95F4;&#xFF0C;&#x7136;&#x540E;&#x662F;&#x4E3B;&#x8981;&#x6B65;&#x9AA4;&#x7684;&#x5206;&#x89E3;&#x3002;<br>
+WWDC 2016 Session 406&#x4F18;&#x5316;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x65F6;&#x95F4;&#x8BE6;&#x7EC6;&#x4ECB;&#x7ECD;&#x4E86;&#x6BCF;&#x4E2A;&#x6B65;&#x9AA4;&#x4EE5;&#x53CA;&#x6539;&#x8FDB;&#x65F6;&#x95F4;&#x7684;&#x63D0;&#x793A;&#xFF0C;&#x4EE5;&#x4E0B;&#x662F;&#x7B80;&#x8981;&#x7684;&#x603B;&#x7ED3;&#x8BF4;&#x660E;&#xFF1A;</p>
+<ul>
+<li>dylib loading time &#x52A8;&#x6001;&#x52A0;&#x8F7D;&#x7A0B;&#x5E8F;&#x67E5;&#x627E;&#x5E76;&#x8BFB;&#x53D6;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4F7F;&#x7528;&#x7684;&#x4F9D;&#x8D56;&#x52A8;&#x6001;&#x5E93;&#x3002;&#x6BCF;&#x4E2A;&#x5E93;&#x672C;&#x8EAB;&#x90FD;&#x53EF;&#x80FD;&#x6709;&#x4F9D;&#x8D56;&#x9879;&#x3002;&#x867D;&#x7136;&#x82F9;&#x679C;&#x7CFB;&#x7EDF;&#x6846;&#x67B6;&#x7684;&#x52A0;&#x8F7D;&#x662F;&#x9AD8;&#x5EA6;&#x4F18;&#x5316;&#x7684;&#xFF0C;&#x4F46;&#x52A0;&#x8F7D;&#x5D4C;&#x5165;&#x5F0F;&#x6846;&#x67B6;&#x53EF;&#x80FD;&#x4F1A;&#x5F88;&#x8017;&#x65F6;&#x3002;&#x4E3A;&#x4E86;&#x52A0;&#x5FEB;&#x52A8;&#x6001;&#x5E93;&#x7684;&#x52A0;&#x8F7D;&#x901F;&#x5EA6;&#xFF0C;&#x82F9;&#x679C;&#x5EFA;&#x8BAE;&#x60A8;&#x4F7F;&#x7528;&#x66F4;&#x5C11;&#x7684;&#x52A8;&#x6001;&#x5E93;&#xFF0C;&#x6216;&#x8005;&#x8003;&#x8651;&#x5408;&#x5E76;&#x5B83;&#x4EEC;&#x3002;</li>
+</ul>
+<p>&#x5EFA;&#x8BAE;&#x7684;&#x76EE;&#x6807;&#x662F;&#x516D;&#x4E2A;&#x989D;&#x5916;&#x7684;(&#x975E;&#x7CFB;&#x7EDF;)&#x6846;&#x67B6;&#x3002;</p>
+<ul>
+<li>Rebase/binding time &#x4FEE;&#x6B63;&#x8C03;&#x6574;&#x955C;&#x50CF;&#x5185;&#x7684;&#x6307;&#x9488;(&#x91CD;&#x65B0;&#x8C03;&#x6574;)&#x548C;&#x8BBE;&#x7F6E;&#x6307;&#x5411;&#x955C;&#x50CF;&#x5916;&#x7B26;&#x53F7;&#x7684;&#x6307;&#x9488;(&#x7ED1;&#x5B9A;)&#x3002;&#x4E3A;&#x4E86;&#x52A0;&#x5FEB;&#x91CD;&#x65B0;&#x5B9A;&#x4F4D;/&#x7ED1;&#x5B9A;&#x65F6;&#x95F4;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x66F4;&#x5C11;&#x7684;&#x6307;&#x9488;&#x4FEE;&#x590D;&#x3002;</li>
+</ul>
+<p>&#x5982;&#x679C;&#x6709;&#x5927;&#x91CF;(&#x5927;&#x7684;&#x662F;20000)Objective-C&#x7C7B;&#x3001;&#x9009;&#x62E9;&#x5668;&#x548C;&#x7C7B;&#x522B;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x53EF;&#x4EE5;&#x589E;&#x52A0;800ms&#x7684;&#x542F;&#x52A8;&#x65F6;&#x95F4;&#x3002;<br>
+&#x5982;&#x679C;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4F7F;&#x7528;C++&#x4EE3;&#x7801;&#xFF0C;&#x90A3;&#x4E48;&#x4F7F;&#x7528;&#x66F4;&#x5C11;&#x7684;&#x865A;&#x62DF;&#x51FD;&#x6570;&#x3002;<br>
+&#x4F7F;&#x7528;Swift&#x7ED3;&#x6784;&#x4F53;&#x901A;&#x5E38;&#x4E5F;&#x66F4;&#x5FEB;&#x3002;</p>
+<ul>
+<li>ObjC setup time Objective-C&#x8FD0;&#x884C;&#x65F6;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x8BBE;&#x7F6E;&#x7C7B;&#x3001;&#x7C7B;&#x522B;&#x548C;&#x9009;&#x62E9;&#x5668;&#x6CE8;&#x518C;&#x3002;&#x6211;&#x4EEC;&#x5BF9;&#x91CD;&#x65B0;&#x5B9A;&#x4F4D;&#x7ED1;&#x5B9A;&#x65F6;&#x95F4;&#x6240;&#x505A;&#x7684;&#x4EFB;&#x4F55;&#x6539;&#x8FDB;&#x4E5F;&#x5C06;&#x4F18;&#x5316;&#x8FD9;&#x4E2A;&#x8BBE;&#x7F6E;&#x65F6;&#x95F4;&#x3002;</li>
+<li>initializer time &#x8FD0;&#x884C;&#x521D;&#x59CB;&#x5316;&#x7A0B;&#x5E8F;&#x3002;&#x5982;&#x679C;&#x4F7F;&#x7528;&#x4E86;Objective-C&#x7684; +load &#x65B9;&#x6CD5;&#xFF0C;&#x8BF7;&#x5C06;&#x5176;&#x66FF;&#x6362;&#x4E3A; +initialize &#x65B9;&#x6CD5;&#x3002;</li>
+</ul>
+<p>&#x5728;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;main&#x4E4B;&#x540E;&#xFF0C;main&#x5C06;&#x4F9D;&#x6B21;&#x8C03;&#x7528;UIApplicationMain&#x548C;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x59D4;&#x6258;&#x65B9;&#x6CD5;&#x3002;</p>
+<h3 class="mume-header" id="%E8%B5%8B%E5%80%BC%E7%9A%84%E6%96%B0%E5%A5%87%E5%86%99%E6%B3%95">&#x8D4B;&#x503C;&#x7684;&#x65B0;&#x5947;&#x5199;&#x6CD5;</h3>
+
+<hr>
+<pre data-role="codeBlock" data-info="objc" class="language-objectivec">    <span class="token keyword">self</span><span class="token punctuation">.</span>tableView<span class="token punctuation">.</span>tableFooterView <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+        UIView <span class="token operator">*</span>backView <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>UIView alloc<span class="token punctuation">]</span> initWithFrame<span class="token punctuation">:</span><span class="token function">CGRectMake</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> SCREEN_WIDTH<span class="token punctuation">,</span> <span class="token number">60</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        UIButton <span class="token operator">*</span>confimBtn <span class="token operator">=</span> <span class="token punctuation">[</span>UIButton buttonWithType<span class="token punctuation">:</span>UIButtonTypeCustom<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        confimBtn<span class="token punctuation">.</span>frame <span class="token operator">=</span> <span class="token function">CGRectMake</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">250</span><span class="token punctuation">,</span> <span class="token number">40</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        confimBtn<span class="token punctuation">.</span>centerX <span class="token operator">=</span> backView<span class="token punctuation">.</span>width<span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">;</span>
+        <span class="token punctuation">[</span>confimBtn setBackgroundColor<span class="token punctuation">:</span>kMainColor<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        confimBtn<span class="token punctuation">.</span>layer<span class="token punctuation">.</span>cornerRadius <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span>
+        <span class="token punctuation">[</span>confimBtn setTitle<span class="token punctuation">:</span><span class="token keyword">self</span><span class="token punctuation">.</span>isCash<span class="token operator">?</span><span class="token string">@&quot;&#x63D0;&#x73B0;&quot;</span><span class="token punctuation">:</span><span class="token string">@&quot;&#x5145;&#x503C;&quot;</span> forState<span class="token punctuation">:</span>UIControlStateNormal<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">[</span>confimBtn addTarget<span class="token punctuation">:</span><span class="token keyword">self</span> action<span class="token punctuation">:</span><span class="token keyword">@selector</span><span class="token punctuation">(</span>confirmButtonClick<span class="token punctuation">)</span> forControlEvents<span class="token punctuation">:</span>UIControlEventTouchUpInside<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">[</span>backView addSubview<span class="token punctuation">:</span>confimBtn<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        backView<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre><h3 class="mume-header" id="textfield">TextField</h3>
+
+<pre data-role="codeBlock" data-info class="language-"><code>Access to UITextField&apos;s _placeholderLabel ivar is prohibite
+</code></pre><p><mark>just replace &quot;_placeholderLabel&quot; with &quot;placeholderLabel&quot;</mark></p>
+<h3 class="mume-header" id="tableviewfooter">TableviewFooter</h3>
+
+<p><img src="img/tableViewEmpty.png" alt="pic"><br>
+<font face="&#x9ED1;&#x4F53;" color="black" size="3"><br>
+&#x5982;&#x56FE;&#x6240;&#x793A;&#x5728;6p<code>iOS10</code>&#x4E2D;footer&#x7A7A;&#x767D;,&#x662F;&#x56E0;&#x4E3A;&#x6211;&#x5728;tableviewFooter&#x4E2D;&#x76F4;&#x63A5;tableviewfooter&#x8D4B;&#x503C;</font></p><font face="&#x9ED1;&#x4F53;" color="black" size="3">
+<pre data-role="codeBlock" data-info="objc" class="language-objectivec"><span class="token keyword">self</span><span class="token punctuation">.</span>tableView<span class="token punctuation">.</span>tableFooterView <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+        UIView <span class="token operator">*</span>viewFooter <span class="token operator">=</span> <span class="token punctuation">[</span>UIView new<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        viewFooter<span class="token punctuation">.</span>frame <span class="token operator">=</span> <span class="token function">CGRectMake</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> SCREEN_WIDTH<span class="token punctuation">,</span> <span class="token function">KSuitFloat</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        UIButton <span class="token operator">*</span>confimButton <span class="token operator">=</span> <span class="token punctuation">[</span>UIButton buttonWithType<span class="token punctuation">:</span>UIButtonTypeCustom<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">[</span>confimButton setTitle<span class="token punctuation">:</span><span class="token string">@&quot;&#x6DFB;&#x52A0;&quot;</span> forState<span class="token punctuation">:</span>UIControlStateNormal<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">[</span>confimButton setBackgroundColor<span class="token punctuation">:</span>kMainColor<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">[</span>confimButton addTarget<span class="token punctuation">:</span><span class="token keyword">self</span> action<span class="token punctuation">:</span><span class="token keyword">@selector</span><span class="token punctuation">(</span>confimButtomClick<span class="token punctuation">:</span><span class="token punctuation">)</span> forControlEvents<span class="token punctuation">:</span>UIControlEventTouchUpInside<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        confimButton<span class="token punctuation">.</span>layer<span class="token punctuation">.</span>cornerRadius <span class="token operator">=</span> <span class="token function">KSuitFloat</span><span class="token punctuation">(</span><span class="token number">20.f</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        confimButton<span class="token punctuation">.</span>clipsToBounds <span class="token operator">=</span> YES<span class="token punctuation">;</span>
+        <span class="token punctuation">[</span>viewFooter addSubview<span class="token punctuation">:</span>confimButton<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">[</span>confimButton mas_makeConstraints<span class="token punctuation">:</span><span class="token operator">^</span><span class="token punctuation">(</span>MASConstraintMaker <span class="token operator">*</span>make<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            make<span class="token punctuation">.</span>bottom<span class="token punctuation">.</span><span class="token function">equalTo</span><span class="token punctuation">(</span>viewFooter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            make<span class="token punctuation">.</span>centerX<span class="token punctuation">.</span><span class="token function">equalTo</span><span class="token punctuation">(</span>viewFooter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            make<span class="token punctuation">.</span>height<span class="token punctuation">.</span><span class="token function">mas_equalTo</span><span class="token punctuation">(</span><span class="token function">KSuitFloat</span><span class="token punctuation">(</span><span class="token number">40</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            make<span class="token punctuation">.</span>width<span class="token punctuation">.</span><span class="token function">mas_equalTo</span><span class="token punctuation">(</span><span class="token function">KSuitFloat</span><span class="token punctuation">(</span><span class="token number">250</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        viewFooter<span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre><p>&#x8BBE;&#x7F6E;&#x4E86;<code>heightForFooterInSection</code></p>
+<pre data-role="codeBlock" data-info="objc" class="language-objectivec"><span class="token operator">-</span> <span class="token punctuation">(</span>CGFloat<span class="token punctuation">)</span>tableView<span class="token punctuation">:</span><span class="token punctuation">(</span>UITableView <span class="token operator">*</span><span class="token punctuation">)</span>tableView heightForFooterInSection<span class="token punctuation">:</span><span class="token punctuation">(</span>NSInteger<span class="token punctuation">)</span>section
+<span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">self</span><span class="token punctuation">.</span>footerHeight<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre></font>
+<font face="&#x9ED1;&#x4F53;" color="green" size="3">
+&#x628A;&#x8FD9;&#x4E2A;height&#x4EE3;&#x7406;&#x65B9;&#x6CD5;&#x53BB;&#x6389;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;
+</font>
+      </div>
+    </body></html>
