@@ -8,8 +8,9 @@ date: 2018-09-19 22:43 +0800
 ## vue-element后台系统总结
 ### 主页面滚动条消除
 > 在全局写入样式消除margin 和 padding height:100%
-``` js
-*  {
+
+```css
+* {
 margin:0;
 padding:0;
 }
@@ -41,7 +42,8 @@ module.exports = {
 ```
 ### el-input高度宽度等修改
 > 另写一个style标签
-``` 
+
+```html
 <style>
     .login_container .el-input__inner{
         height: 60px;
