@@ -1,6 +1,6 @@
 ---
 layout: post
-title: pip更新
+title: elementUI 
 tags: vue js elementUI 
 math: true
 date: 2018-09-19 22:43 +0800
@@ -23,6 +23,7 @@ html,body,#app {
 
 ### px2rem配置
 > 在vue.config.js里写入
+
 ```js
 module.exports = {
   css: {
@@ -40,7 +41,9 @@ module.exports = {
   }
 }
 ```
+
 ### el-input高度宽度等修改
+
 > 另写一个style标签
 
 ```html
